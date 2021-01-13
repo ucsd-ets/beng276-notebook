@@ -5,8 +5,6 @@ USER root
 # https://pdb2pqr.readthedocs.io/en/latest/getting.html#python-package-installer-pip
 RUN pip install pdb2pqr
 
-USER $NB_UID
-
 # https://apbs.readthedocs.io/en/latest/getting/index.html#installing-from-pre-compiled-binaries
 # https://github.com/Electrostatics/apbs/releases
 RUN pwd && \
@@ -14,4 +12,7 @@ RUN pwd && \
     wget https://github.com/Electrostatics/apbs/releases/download/v3.0.0/APBS-3.0.0_Linux.zip && \
     unzip APBS-3.0.0_Linux.zip && \
     mv APBS-3.0.0_Linux apbs && \
+    chown -R $NB_UID apbs
     rm APBS-3.0.0_Linux.zip
+
+USER $NB_UID
