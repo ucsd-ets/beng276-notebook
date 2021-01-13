@@ -21,7 +21,6 @@ RUN apt-get update -y && \
     cd /opt && \
     wget https://browndye.ucsd.edu/downloads/browndye2-ubuntu-20.04-2021-01-08.tar.gz && \
     tar zxvf browndye2-ubuntu-20.04-2021-01-08.tar.gz && \
-    chown -R $NB_UID browndye2 && \
     rm browndye2-ubuntu-20.04-2021-01-08.tar.gz
 
 env PATH=/opt/browndye2/bin:$PATH
