@@ -15,6 +15,7 @@ RUN pip install pdb2pqr
 #    chown -R $NB_UID apbs
 #    rm APBS-3.0.0_Linux.zip
 
+# https://browndye.ucsd.edu/download.html#gnu-linux
 RUN apt-get update -y && \
     apt-get install -y libexpat1 make apbs && \
     cd /opt && \
@@ -23,5 +24,7 @@ RUN apt-get update -y && \
     mv browndye2-ubuntu-20.04-2021-01-08 browndye2 && \
     chown -R $NB_UID browndye2 && \
     rm browndye2-ubuntu-20.04-2021-01-08.tar.gz
+
+env PATH=/opt/browndye2/bin:$PATH
 
 USER $NB_UID
