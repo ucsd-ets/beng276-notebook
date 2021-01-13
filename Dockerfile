@@ -15,4 +15,11 @@ RUN pwd && \
     chown -R $NB_UID apbs
     rm APBS-3.0.0_Linux.zip
 
+RUN cd /opt && \
+    wget https://browndye.ucsd.edu/downloads/browndye2-ubuntu-20.04-2021-01-08.tar.gz && \
+    tar zxf browndye2-ubuntu-20.04-2021-01-08.tar.gz && \
+    mv browndye2-ubuntu-20.04-2021-01-08 browndye2 && \
+    chown -R $NB_UID browndye2 && \
+    rm browndye2-ubuntu-20.04-2021-01-08.tar.gz
+
 USER $NB_UID
