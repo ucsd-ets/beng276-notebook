@@ -14,4 +14,4 @@ RUN pwd && \
     wget https://github.com/Electrostatics/apbs/releases/download/v3.0.0/APBS-3.0.0_Linux.zip && \
     unzip APBS-3.0.0_Linux.zip && \
     mv APBS-3.0.0_Linux apbs && \
-    rm v3.0.0/APBS-3.0.0_Linux.zip
+    rm APBS-3.0.0_Linux.zip
