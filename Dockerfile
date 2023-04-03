@@ -1,4 +1,4 @@
-FROM ucsdets/scipy-ml-notebook:2021.1-stable
+FROM ucsdets/scipy-ml-notebook:2023.2-stable
 
 USER root
 
