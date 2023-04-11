@@ -19,6 +19,7 @@ ARG BROWNDYE_VERSION=20.04-2023-01-25
 
 # https://browndye.ucsd.edu/download.html#gnu-linux
 RUN apt-get update -y && \
+    apt-get install -y ocaml libexpat-dev liblapack-dev && \
     apt-get install -y libexpat1 make apbs && \
     cd /opt && \
     wget https://browndye.ucsd.edu/downloads/browndye2-ubuntu-$BROWNDYE_VERSION.tar.gz && \
