@@ -25,6 +25,8 @@ RUN apt-get update -y && \
     wget https://browndye.ucsd.edu/downloads/browndye2-ubuntu-$BROWNDYE_VERSION.tar.gz && \
     tar zxvf browndye2-ubuntu-$BROWNDYE_VERSION.tar.gz && \
     chown -R $NB_UID browndye2 && \
+    conda init bash && \
+    exec bash && \
     rm browndye2-ubuntu-$BROWNDYE_VERSION.tar.gz
 
 env PATH=/opt/browndye2/bin:$PATH
