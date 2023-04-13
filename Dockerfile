@@ -14,8 +14,8 @@ RUN pwd && \
     wget https://github.com/Electrostatics/apbs/releases/download/v$APBS_VERSION/APBS-$APBS_VERSION.Linux.zip && \
     unzip APBS-$APBS_VERSION.Linux.zip && \
     mv APBS-$APBS_VERSION_Linux apbs && \
-    chown -R $NB_UID apbs
-    rm APBS-$APBS_VERSION_Linux.zip
+    chown -R $NB_UID apbs && \
+    rm APBS-$APBS_VERSION_Linux.zip && \
 env PATH=/opt/abps/bin:$PATH
 
 
