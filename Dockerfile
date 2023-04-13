@@ -7,13 +7,15 @@ RUN pip install pdb2pqr
 
 # https://apbs.readthedocs.io/en/latest/getting/index.html#installing-from-pre-compiled-binaries
 # https://github.com/Electrostatics/apbs/releases
+ARG APBS_VERSION=20.04-2023-01-25
+
 RUN pwd && \
     cd /opt && \
-    wget https://github.com/Electrostatics/apbs/releases/download/v3.4.1/APBS-3.4.1.Linux.zip && \
-    unzip APBS-3.4.1.Linux.zip && \
-    mv APBS-3.0.0_Linux apbs && \
+    wget https://github.com/Electrostatics/apbs/releases/download/v$APBS_VERSION/APBS-$APBS_VERSION.Linux.zip && \
+    unzip APBS-$APBS_VERSION.Linux.zip && \
+    mv APBS-$APBS_VERSION_Linux apbs && \
     chown -R $NB_UID apbs
-    rm APBS-3.0.0_Linux.zip
+    rm APBS-$APBS_VERSION_Linux.zip
 env PATH=/opt/abps/bin:$PATH
 
 
