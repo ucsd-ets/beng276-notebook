@@ -20,6 +20,7 @@ RUN pwd && \
     
 
 env PATH=/opt/apbs/bin:$PATH
+env PATH=/opt/apbs/share/apbs/tools/bin:$PATH
 
 
 ARG BROWNDYE_VERSION=20.04-2023-01-25
