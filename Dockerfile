@@ -1,4 +1,4 @@
-FROM ucsdets/scipy-ml-notebook:2023.2-stable
+FROM ghcr.io/ucsd-ets/scipy-ml-notebook:2024.2-stable
 
 USER root
 
@@ -38,5 +38,7 @@ RUN apt-get update -y && \
     rm browndye2-ubuntu-$BROWNDYE_VERSION.tar.gz
 
 env PATH=/opt/browndye2/bin:$PATH
+
+RUN conda install -c conda-forge openmm cudatoolkit=11.2
 
 USER $NB_UID
