@@ -39,6 +39,6 @@ RUN apt-get update -y && \
 
 env PATH=/opt/browndye2/bin:$PATH
 
-RUN conda install -c conda-forge openmm cudatoolkit=11.2
+# RUN conda install -c conda-forge openmm cudatoolkit=11.2
 
 USER $NB_UID
