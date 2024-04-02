@@ -1,4 +1,4 @@
-FROM ucsdets/scipy-ml-notebook:2023.2-stable
+FROM ghcr.io/ucsd-ets/scipy-ml-notebook:2024.2-stable
 
 USER root
 
@@ -39,4 +39,8 @@ RUN apt-get update -y && \
 
 env PATH=/opt/browndye2/bin:$PATH
 
+RUN mamba install -c conda-forge openmm cudatoolkit=11.2
+RUN pip install mdtraj
+
 USER $NB_UID
+
