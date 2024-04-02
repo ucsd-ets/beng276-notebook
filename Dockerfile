@@ -40,7 +40,7 @@ RUN apt-get update -y && \
 env PATH=/opt/browndye2/bin:$PATH
 
 RUN mamba install -c conda-forge openmm cudatoolkit=11.2
-
+RUN pip install mdtraj
 
 USER $NB_UID
 
