@@ -1,5 +1,5 @@
-FROM ucsdets/scipy-ml-notebook:2023.2-stable
-# Creating new branch 
+FROM ghcr.io/ucsd-ets/scipy-ml-notebook:2024.2-stable	
+
 USER root
 
 # https://pdb2pqr.readthedocs.io/en/latest/getting.html#python-package-installer-pip
@@ -38,5 +38,9 @@ RUN apt-get update -y && \
     rm browndye2-ubuntu-$BROWNDYE_VERSION.tar.gz
 
 env PATH=/opt/browndye2/bin:$PATH
+
+RUN mamba install -c conda-forge openmm cudatoolkit=11.2
+
+
 
 USER $NB_UID
