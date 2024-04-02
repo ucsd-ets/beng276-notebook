@@ -41,4 +41,8 @@ FROM ghcr.io/ucsd-ets/scipy-ml-notebook:2024.2-stable
 
 # RUN conda install -c conda-forge openmm cudatoolkit=11.2
 
+RUN mamba install -c conda-forge openmm cudatoolkit=11.2
+
+
+
 USER $NB_UID
