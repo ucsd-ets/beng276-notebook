@@ -1,5 +1,5 @@
-FROM ghcr.io/ucsd-ets/scipy-ml-notebook:2024.2-stable	
-RUN echo Hello world
+FROM ghcr.io/ucsd-ets/scipy-ml-notebook:2024.2-stable
+
 USER root
 
 # https://pdb2pqr.readthedocs.io/en/latest/getting.html#python-package-installer-pip
@@ -40,7 +40,6 @@ RUN apt-get update -y && \
 env PATH=/opt/browndye2/bin:$PATH
 
 RUN mamba install -c conda-forge openmm cudatoolkit=11.2
-
 
 
 USER $NB_UID
