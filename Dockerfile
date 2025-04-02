@@ -43,5 +43,11 @@ RUN mamba install -c conda-forge openmm cudatoolkit=11.2
 RUN mamba install seekr2_openmm_plugin
 RUN pip install mdtraj
 
+RUN pwd && \
+    cd /opt && \
+    git clone https://github.com/seekrcentral/seekr2.git && \
+    cd seekr2 && \
+    python -m pip install . 
+
 USER $NB_UID
 
