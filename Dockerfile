@@ -23,14 +23,14 @@ env PATH=/opt/apbs/bin:$PATH
 env PATH=/opt/apbs/share/apbs/tools/bin:$PATH
 
 
-ARG BROWNDYE_VERSION=20.04-2023-01-25
+ARG BROWNDYE_VERSION=ubuntu-22.04-2023-12-30
 
 # https://browndye.ucsd.edu/download.html#gnu-linux
 RUN apt-get update -y && \
     apt-get install -y ocaml libexpat-dev liblapack-dev && \
     apt-get install -y libexpat1 make && \
     cd /opt && \
-    wget https://browndye.ucsd.edu/downloads/browndye2-ubuntu-$BROWNDYE_VERSION.tar.gz && \
+    wget https://browndye.ucsd.edu/downloads/browndye2-$BROWNDYE_VERSION.tar.gz && \
     tar zxvf browndye2-ubuntu-$BROWNDYE_VERSION.tar.gz && \
     chown -R $NB_UID browndye2 && \
     conda init bash && \
