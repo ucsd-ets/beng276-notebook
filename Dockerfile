@@ -1,4 +1,4 @@
-FROM ghcr.io/ucsd-ets/scipy-ml-notebook:2024.2-stable
+FROM ghcr.io/ucsd-ets/datascience-notebook:2025.2-stable
 
 USER root
 
