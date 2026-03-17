@@ -37,6 +37,11 @@ RUN apt-get update -y && \
     exec bash && \
     rm $BROWNDYE_VERSION.tar.gz
 
+# Install FEniCSx
+RUN add-apt-repository ppa:fenics-packages/fenics -y && \
+    apt update -y && \
+    apt install fenicsx
+
 env PATH=/opt/browndye2/bin:$PATH
 
 RUN mamba install -c conda-forge openmm cudatoolkit=11.2
