@@ -41,7 +41,7 @@ env PATH=/opt/browndye2/bin:$PATH
 
 RUN mamba install -c conda-forge openmm cudatoolkit=11.2
 RUN mamba install seekr2_openmm_plugin
-RUN mamba -c conda-forge fenics-dolfinx mpich pyvista
+RUN mamba install -c conda-forge fenics-dolfinx mpich pyvista
 RUN pip install mdtraj
 
 RUN pwd && \
