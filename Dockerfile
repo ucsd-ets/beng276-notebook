@@ -1,4 +1,4 @@
-FROM ghcr.io/ucsd-ets/datascience-notebook:2025.2-stable
+FROM ghcr.io/ucsd-ets/datascience-notebook:2026.1-main
 
 USER root
 
@@ -48,6 +48,8 @@ RUN pwd && \
     git clone https://github.com/seekrcentral/seekr2.git && \
     cd seekr2 && \
     python -m pip install . 
+
+RUN mamba install -c conda-forge fenics-dolfinx mpich pyvista
 
 USER $NB_UID
 
