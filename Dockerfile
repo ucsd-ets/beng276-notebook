@@ -3,7 +3,7 @@ FROM ghcr.io/ucsd-ets/datascience-notebook:2025.1-stable
 USER root
 
 # https://pdb2pqr.readthedocs.io/en/latest/getting.html#python-package-installer-pip
-RUN pip install pdb2pqr
+# RUN pip install pdb2pqr
 
 # https://apbs.readthedocs.io/en/latest/getting/index.html#installing-from-pre-compiled-binaries
 # https://github.com/Electrostatics/apbs/releases
@@ -39,9 +39,9 @@ RUN apt-get update -y && \
 
 env PATH=/opt/browndye2/bin:$PATH
 
-RUN mamba install -c conda-forge openmm cudatoolkit=11.2
-RUN mamba install seekr2_openmm_plugin
-RUN pip install mdtraj
+# RUN mamba install -c conda-forge openmm cudatoolkit=11.2
+# RUN mamba install seekr2_openmm_plugin
+# RUN pip install mdtraj
 
 RUN pwd && \
     cd /opt && \
@@ -49,7 +49,7 @@ RUN pwd && \
     cd seekr2 && \
     python -m pip install . 
 
-RUN mamba install -c conda-forge fenics-dolfinx mpich pyvista
+# RUN mamba install -c conda-forge fenics-dolfinx mpich pyvista
 
 COPY beng276.yml beng276.yml
 RUN mamba create -f beng276.yml
