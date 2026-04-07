@@ -51,5 +51,8 @@ RUN pwd && \
 
 RUN mamba install -c conda-forge fenics-dolfinx mpich pyvista
 
+COPY beng276.yml beng276.yml
+RUN mamba create -f beng276.yml
+
 USER $NB_UID
 
