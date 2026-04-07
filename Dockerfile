@@ -49,7 +49,7 @@ RUN pwd && \
     cd seekr2 && \
     python -m pip install . 
 
-RUN mamba install -c conda-forge fenics-dolfinx mpich pyvista pysqlite2
+RUN mamba install -c conda-forge fenics-dolfinx mpich pyvista
 
 USER $NB_UID
 
