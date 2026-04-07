@@ -1,4 +1,4 @@
-FROM ghcr.io/ucsd-ets/datascience-notebook:2026.1-main
+FROM ghcr.io/ucsd-ets/datascience-notebook:2025.1-stable
 
 USER root
 
