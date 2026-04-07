@@ -2,9 +2,23 @@ FROM ghcr.io/ucsd-ets/datascience-notebook:2025.1-stable
 
 USER root
 
-# https://pdb2pqr.readthedocs.io/en/latest/getting.html#python-package-installer-pip
-# RUN pip install pdb2pqr
+# Create the beng276 conda environment
+ARG ENVNAME=beng276
+ARG PYVER=3.11
+RUN mamba create --yes -p "${CONDA_DIR}/envs/${ENVNAME}" \
+    python=${PYVER} \
+    ipykernel \
+    pip
+    # jupyterlab && \
+    # mamba clean --all -f -y && \
+# RUN mamba create --yes -p 
 
+# pdb2pqr
+# https://pdb2pqr.readthedocs.io/en/latest/getting.html#python-package-installer-pip
+RUN conda run -n ${ENVNAME} pip install pdb2pqr
+#    pip install pdb2pqr
+
+# apbs
 # https://apbs.readthedocs.io/en/latest/getting/index.html#installing-from-pre-compiled-binaries
 # https://github.com/Electrostatics/apbs/releases
 # 3.4.1 Website 
@@ -17,12 +31,11 @@ RUN pwd && \
     mv APBS-$APBS_VERSION.Linux apbs && \
     chown -R $NB_UID apbs && \
     rm APBS-$APBS_VERSION.Linux.zip
-    
 
 env PATH=/opt/apbs/bin:$PATH
 env PATH=/opt/apbs/share/apbs/tools/bin:$PATH
 
-
+# browndye2
 ARG BROWNDYE_VERSION=browndye2-ubuntu-22.04-2023-12-30
 
 # https://browndye.ucsd.edu/download.html#gnu-linux
@@ -39,20 +52,27 @@ RUN apt-get update -y && \
 
 env PATH=/opt/browndye2/bin:$PATH
 
-# RUN mamba install -c conda-forge openmm cudatoolkit=11.2
-# RUN mamba install seekr2_openmm_plugin
-# RUN pip install mdtraj
+# mdtraj
+RUN mamba install -n ${ENVNAME} -y -c conda-forge openmm cudatoolkit=11.2
+RUN mamba install -n ${ENVNAME} -y seekr2_openmm_plugin
+RUN conda run -n ${ENVNAME} pip install mdtraj
 
+# seekr2
 RUN pwd && \
+    apt-get install -y zlib1g-dev && \
     cd /opt && \
     git clone https://github.com/seekrcentral/seekr2.git && \
     cd seekr2 && \
-    python -m pip install . 
+    conda run -n ${ENVNAME} python -m pip install . 
 
-# RUN mamba install -c conda-forge fenics-dolfinx mpich pyvista
 
-COPY beng276.yml beng276.yml
-RUN mamba create -f beng276.yml
+# fenics
+RUN mamba install -y -n ${ENVNAME} -c conda-forge fenics-dolfinx mpich pyvista
+
+# RUN pwd
+# COPY beng276.yml beng276.yml
+# RUN ls -l ~ && \
+#     cat beng276.yml && \
+#     mamba env create --name beng276 --file beng276.yml
 
 USER $NB_UID
-
