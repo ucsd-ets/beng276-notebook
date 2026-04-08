@@ -8,7 +8,8 @@ ARG PYVER=3.11
 RUN mamba create --yes -p "${CONDA_DIR}/envs/${ENVNAME}" \
     python=${PYVER} \
     ipykernel \
-    pip
+    pip && \
+    "${CONDA_DIR}/envs/${ENVNAME}/bin/python" -m ipykernel install --prefix /opt/conda --name="${ENVNAME}" && \
     # jupyterlab && \
     # mamba clean --all -f -y && \
 # RUN mamba create --yes -p 
