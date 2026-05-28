@@ -68,7 +68,7 @@ RUN pwd && \
 
 
 # fenics
-RUN mamba install -y -n ${ENVNAME} -c conda-forge fenics fenics-dolfinx mpich pyvista \
+RUN mamba install -y -n ${ENVNAME} -c conda-forge fenics-dolfinx mpich pyvista \
   matplotlib ipywidgets tqdm
 
 USER $NB_UID
