@@ -33,8 +33,8 @@ RUN pwd && \
     chown -R $NB_UID apbs && \
     rm APBS-$APBS_VERSION.Linux.zip
 
-env PATH=/opt/apbs/bin:$PATH
-env PATH=/opt/apbs/share/apbs/tools/bin:$PATH
+ENV PATH=/opt/apbs/bin:$PATH
+ENV PATH=/opt/apbs/share/apbs/tools/bin:$PATH
 
 # browndye2
 ARG BROWNDYE_VERSION=browndye2-ubuntu-22.04-2023-12-30
@@ -51,7 +51,7 @@ RUN apt-get update -y && \
     exec bash && \
     rm $BROWNDYE_VERSION.tar.gz
 
-env PATH=/opt/browndye2/bin:$PATH
+ENV PATH=/opt/browndye2/bin:$PATH
 
 # mdtraj
 RUN mamba install -n ${ENVNAME} -y -c conda-forge openmm cudatoolkit=11.2
@@ -68,12 +68,7 @@ RUN pwd && \
 
 
 # fenics
-RUN mamba install -y -n ${ENVNAME} -c conda-forge fenics-dolfinx mpich pyvista
-
-# RUN pwd
-# COPY beng276.yml beng276.yml
-# RUN ls -l ~ && \
-#     cat beng276.yml && \
-#     mamba env create --name beng276 --file beng276.yml
+RUN mamba install -y -n ${ENVNAME} -c conda-forge fenics fenics-dolfinx mpich pyvista \
+  matplotlib ipywidgets tqdm
 
 USER $NB_UID
