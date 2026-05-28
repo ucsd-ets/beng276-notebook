@@ -1,14 +1,19 @@
-name: beng276        # The name of the environment
-channels:                 # Order of priority for package search
+name: beng276 # The name of the environment
+channels: # Order of priority for package search
   - conda-forge
   - defaults
-dependencies:             # List of packages to install
+dependencies: # List of packages to install
   - openmm
   - cudatoolkit=11.2
   - seekr2_openmm_plugin
   - fenics-dolfinx
   - mpich
   - pyvista
-  - pip:   
-    - pdb2pqr               # Nested list for PyPI-only packages
-    - mdtraj
+  - pip
+  - mdtraj
+  - pdb2pqr
+  - seekr2
+  # - pip:
+  #     - pdb2pqr # Nested list for PyPI-only packages
+  #     # - mdtraj
+      # - git+https://github.com/seekrcentral/seekr2.git
